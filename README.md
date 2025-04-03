@@ -201,25 +201,27 @@ If you find this project interesting or have suggestions, I’d love to connect!
 
 ### 🏞️ Authentication  
 <div>
-  <img src="./Preview/login.jpeg" width="200px" style="border:2px solid gray;">  
-  <img src="./Preview/signup.jpeg" width="200px" style="border:2px solid gray;">  
-  <img src="./Preview/recover.jpeg" width="200px" style="border:2px solid gray;">  
+  <img src="./Preview/login.jpeg" width="33%" style="border:2px solid gray;">  
+  <img src="./Preview/signup.jpeg" width="33%" style="border:2px solid gray;">  
+  <img src="./Preview/recover.jpeg" width="33%" style="border:2px solid gray;">  
 </div> 
 
 ### 🌲 User dashboard  
 <div>
-  <img src="./Preview/profile.jpeg" width="200px" style="border:2px solid gray;">  
-  <img src="./Preview/settings.jpeg" width="200px" style="border:2px solid gray;">  
+  <img src="./Preview/profile.jpeg" width="49%" style="border:2px solid gray;">  
+  <img src="./Preview/settings.jpeg" width="49%" style="border:2px solid gray;">  
 </div> 
 
 ### 🌅 Chat interface  
 <div>
-  <img src="./Preview/chat.jpeg" width="200px" style="border:2px solid gray;">  
-  <img src="./Preview/new_chat.jpeg" width="200px" style="border:2px solid gray;">  
+  <img src="./Preview/chat.jpeg" width="49%" style="border:2px solid gray;">  
+  <img src="./Preview/new_chat.jpeg" width="49%" style="border:2px solid gray;">  
 </div>   
 
 ### 🌊 Admin panel  
 <div>
-  <img src="./Preview/settings.jpeg" width="200px" style="border:2px solid gray;">  
-  <img src="./Preview/invitation.jpeg" width="200px" style="border:2px solid gray;">  
+  <img src="./Preview/settings.jpeg" width="49%" style="border:2px solid gray;">  
+  <img src="./Preview/invitation.jpeg" width="49%" style="border:2px solid gray;">  
 </div> 
+
+📸 **For more pictures, visit the** [`/Preview`](./Preview) **folder!** 🔍✨  
