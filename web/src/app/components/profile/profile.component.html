@@ -1,0 +1,74 @@
+<nav>
+    <div class="d-flex justif-content-center gap-3">
+        <img class="logo" src="/assets/icons/angular-minds-logo.svg" alt="logo" width="35px">
+        <h3 class="d-inline">Angular Minds</h3>
+    </div>
+    <a id="back" [routerLink]="['/']" routerLinkActive="router-link-active"> <img class="icon"
+            src="/assets/icons/arrow_back.svg"> Back </a>
+</nav>
+
+<section id="screen">
+    <div class="left">
+        <div class="profile-picture">
+            <img [src]="profilePictureURL"
+                alt="">
+            <img class="icon" (click)="fileInput.click()" src="/assets/icons/edit.svg">
+            <input type="file" #fileInput (change)="onFileChange($event)" style="display: none;" accept="image/*">
+        </div>
+        <div class="menu">
+            <a [routerLink]="['/user/profile']" routerLinkActive="router-link-active"> <img class="icon"
+                src="/assets/icons/person.svg"> Profile</a>
+            <a [routerLink]="['/user/organisation']" routerLinkActive="router-link-active"> <img class="icon"
+                    src="/assets/icons/person.svg"> Organisation</a>
+            <a [routerLink]="['/user/settings']" routerLinkActive="router-link-active"> <img class="icon"
+                    src="/assets/icons/person.svg"> Settings</a>
+            <button id="logout" (click)="authService.logout()" class="btn"> <img class="icon"
+                    src="/assets/icons/person.svg"> Logout</button>
+        </div>
+    </div>
+    <div class="right">
+        <h3>Profile</h3>
+        <app-loading-animation class="loading" *ngIf="isLoading"></app-loading-animation>
+        <form [formGroup]="profileForm" class="profile-form">
+            <div class="form-group form-row">
+                <div class="form-column">
+                    <label for="userID">User ID:</label>
+                    <input id="userID" type="text" [value]="userService.getUserProfile()?.userId" readonly />
+                </div>
+                <div class="form-column">
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" [value]="userService.getUserProfile()?.email" readonly />
+                </div>
+            </div>
+            <div class="form-group form-row">
+                <div class="form-column">
+                    <label for="firstName">First Name:</label>
+                    <input id="firstName" formControlName="firstname" type="text"/>
+                </div>
+                <div class="form-column">
+                    <label for="lastname">Last Name:</label>
+                    <input id="lastname" formControlName="lastname" type="text"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <select id="role" formControlName="role">
+                    <option value="BDE">BDE</option>
+                    <option value="SM">SM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" formControlName="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="btn-wrapper" *ngIf="profileForm.dirty">
+                <button (click)="resetForm()" class="btn btn-reset">Reset</button>
+                <button (click)="updateProfile()" [disabled]="profileForm.invalid" class="btn btn-submit">Save</button>
+            </div>
+        </form>
+    </div>
+</section>

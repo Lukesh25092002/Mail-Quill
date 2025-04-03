@@ -1,0 +1,90 @@
+* {
+    color: lightgray;
+}
+
+.overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #161616a8;
+    z-index: 9999;
+    display: flex;
+}
+
+.container {
+    position: relative;
+    margin: auto;
+    height: auto;
+    width: auto;
+    background-color: #212121;
+    border: 1px solid rgba(128, 128, 128, 0.75);
+    border-radius: 1rem;
+    padding: 2rem;
+    padding-bottom: 1rem;
+}
+
+#createChatForm {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 35vw;
+}
+
+.input-wrapper label{
+    display: block;
+    text-align: left;
+}
+
+.input-wrapper input {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    background-color: #313131;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.25rem;
+}
+
+.input-wrapper input:focus {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.seperator {
+    opacity: 0.1;
+}
+
+#createChatForm .btn-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+#createChatForm .btn-wrapper .btn {
+    padding: 0.5rem 1rem;
+    margin: 0;
+    color: #0087EB;
+    font-weight: bolder;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+    background-color: transparent;
+    width: auto;
+}
+
+#createChatForm .btn-wrapper .btn:first-child {
+    margin-right: 1rem;
+}
+
+#createChatForm .btn-wrapper .btn:hover {
+    border: 1px solid rgba(211, 211, 211, 0.2);
+    color: #5eb6fa;
+}
+
+.overlay .container app-loading-animation {
+    position: absolute;
+    top: 0;
+    right: 0;
+    scale: 0.5;
+}

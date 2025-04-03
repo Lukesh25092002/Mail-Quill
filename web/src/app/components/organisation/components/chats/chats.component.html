@@ -1,0 +1,20 @@
+<table cellspacing="0" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Created by</th>
+            <th>Link</th>
+            <th *ngIf="accessControlService.hasPermission(PERMISSION.DELETE_CHAT)">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let chat of chatService.getChatHistory(); let i = index">
+            <td>{{ chat.client }}</td>
+            <td>{{ chat.userId.email }}</td>
+            <td><a class="visit-client" href={{chat.link}} target="#"> visit</a></td>
+            <td *ngIf="accessControlService.hasPermission(PERMISSION.DELETE_CHAT)"><button class="btn delete-chat"
+                    (click)="deleteChat(chat._id)"><img class="icon" src="/assets/icons/delete.svg" alt=""></button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Story</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Submit Your Story</h1>
+        <form action="#">
+            <label for="userInput">Enter Your Text:</label>
+            <input type="text" id="userInput" name="userInput" placeholder="Type something here..." required>
+
+            <label for="responseBox">Server Response:</label>
+            <textarea id="responseBox" name="responseBox" readonly placeholder="The server will send the response here..."></textarea>
+
+            <button id="submit" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

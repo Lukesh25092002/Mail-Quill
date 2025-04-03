@@ -1,0 +1,55 @@
+*{
+    color: lightgray;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #161616a8;
+    z-index: 9999;
+    display: flex;
+}
+
+.confirmation-box{
+    position: relative;
+    margin: auto;
+    height: 30%;
+    width: 30%;
+    background-color: #212121;
+    border: 1px solid rgba(128, 128, 128, 0.75);
+    border-radius: 1rem;
+    padding: 1rem;
+    scale: 0.95;
+    opacity: 50%;
+    transition: scale 150ms, opacity 150ms;
+}
+
+.seperator{
+    opacity: 0.1;
+}
+
+.btn-wrapper{
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.btn{
+    padding: 0.5rem 1rem;
+    color: #0087EB;
+    font-weight: bolder;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+
+.btn:first-child{
+    margin-right: 1rem;
+}
+
+.btn:hover{
+    border: 1px solid rgba(211, 211, 211, 0.2);
+    color: #5eb6fa;
+}

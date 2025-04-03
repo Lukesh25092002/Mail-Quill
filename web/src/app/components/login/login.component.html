@@ -1,0 +1,68 @@
+<div id="g_id_onload" data-client_id="893913805202-rg7o6somctq21ike6dk1u0d696t64e0q.apps.googleusercontent.com"
+  data-context="signin" data-ux_mode="popup" data-callback="handelGoogleAuth" data-auto_prompt="false">
+</div>
+
+<div class="login-reg-panel">
+  <div class="login-info-box" *ngIf="!isLoginPanelActive">
+    <h2>Have an account?</h2>
+    <p>Let’s get you logged in</p>
+    <label id="label-register" (click)="togglePanel(true)">Login</label>
+  </div>
+
+  <div class="register-info-box" *ngIf="isLoginPanelActive">
+    <h2>Don't have an account?</h2>
+    <p>New here? Join us today!</p>
+    <label id="label-login" (click)="togglePanel(false)">Register</label>
+  </div>
+
+  <div class="white-panel" [ngClass]="{ 'right-log': !isLoginPanelActive }">
+    <div class="login-show" [hidden]="!isLoginPanelActive">
+      <app-loading-animation class="loading-animation" *ngIf="isLoading"></app-loading-animation>
+      <h2>LOGIN</h2>
+      <form [formGroup]="loginForm">
+        <input formControlName="email" type="text" [disabled]="isLoading" placeholder="Email" />
+        <input formControlName="password" type="password" [disabled]="isLoading" placeholder="Password" />
+        <button (click)="loginWithEmailAndPassword()" [disabled]="loginForm.invalid || isLoading">Login</button>
+      </form>
+      <a class="forgot-password" [routerLink]="['/auth/forgot-password']" routerLinkActive="router-link-active">Forgot
+        password?</a>
+      <hr>
+
+      <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="filled_black"
+        data-text="signin_with" data-size="large" data-logo_alignment="left">
+      </div>
+
+    </div>
+    <div class="register-show" [hidden]="isLoginPanelActive">
+      <app-loading-animation class="loading-animation" *ngIf="isLoading"></app-loading-animation>
+      <h2>REGISTER</h2>
+      <form [formGroup]="registerForm">
+        <div class="input-pair">
+          <input formControlName="organisation" type="text" [value]="invitationDetails?.organisationName"
+         [readonly]="invitationDetails" placeholder="Organisation">
+          <input *ngIf="invitationDetails" type="text" [value]="invitationDetails?.organisationRole" [readonly]="invitationDetails"
+            placeholder="Role">
+        </div>
+        <input formControlName="email" type="text" [readonly]="invitationDetails" [value]="invitationDetails?.email"
+          placeholder="Email">
+        <div class="input-pair">
+          <input formControlName="password" type="password" placeholder="Password">
+          <input formControlName="password2" type="password" placeholder="Confirm Password">
+        </div>
+        @if(invitationDetails){
+          <button (click)="registerWithInvitation()">Register</button>
+        }
+        @else {
+          <button (click)="registerWithEmailAndPassword()" [disabled]="registerForm.invalid || isLoading">Register</button>
+        }
+        
+      </form>
+      <hr>
+
+      <div *ngIf="!invitationDetails" class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="filled_black"
+        data-text="signup_with" data-size="large" data-logo_alignment="left">
+      </div>
+
+    </div>
+  </div>
+</div>

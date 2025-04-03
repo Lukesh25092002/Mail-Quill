@@ -1,0 +1,48 @@
+<app-sidebar #sidebar></app-sidebar>
+
+<section id="screen" [ngStyle]="isFullScreen? {'margin-left': '0vw','width': '100vw'}:{}">
+    <nav>
+        <div class="d-flex justif-content-center gap-3">
+            <img (click)="toggleFullScreen()" class="me-4 toggleFullscreen" width="35px"
+                src="/assets/icons/dock_to_right.svg" alt="collapse">
+            <img class="logo" src="/assets/icons/angular-minds-logo.svg" alt="logo" width="35px">
+            <h3 class="d-inline">Angular Minds</h3>
+        </div>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <img [src]="userService.getUserProfile()?.profile" type="button" class="profile dropdown-toggle"
+                    data-ts-toggle="dropdown" aria-expanded="false">
+            </button>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item" [routerLink]="['/user/profile']" routerLinkActive="router-link-active">
+                    <img class="icon" src="/assets/icons/person.svg" alt="">
+                    Profile
+                </li>
+                <li class="dropdown-item" [routerLink]="['user/organisation']" routerLinkActive="router-link-active">
+                    <img class="icon" src="/assets/icons/group.svg" alt="">
+                    Organisation
+                </li>
+                <li class="dropdown-item" [routerLink]="['user/settings']" routerLinkActive="router-link-active">
+                    <img class="icon" src="/assets/icons/settings.svg" alt="">
+                    Settings
+                </li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li class="dropdown-item">
+                    <img class="icon" src="/assets/icons/logout.svg" alt="">
+                    <button class="btn" (click)="logout()">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <router-outlet></router-outlet>
+
+    <footer>
+        <p class="text-center small m-2 opacity-50">LLMs can make mistakes. Verify the responses before taking any
+            actions.</p>
+    </footer>
+</section>

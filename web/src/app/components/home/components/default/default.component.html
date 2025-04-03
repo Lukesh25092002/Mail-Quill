@@ -1,0 +1,15 @@
+<section id="default" class="hero">
+    <div>
+        <h1 class="heading">Your Personal Email Assistant</h1>
+        <p class="description">
+            Unlock the power of AI and create professional, personalized emails in seconds. Whether it’s a formal
+            business email or a casual message, our assistant has you covered.
+        </p>
+        <p class="description">
+            Say goodbye to writer’s block! With our AI assistant, you can quickly craft perfect emails tailored to your
+            needs, whether it's for work, business, or personal matters.
+        </p>
+        <button id="start-chat-btn" (click)="setCreateChatVisibility(true)">Generate Your Email</button>
+        <app-create-chat *ngIf="isCreateChatActive" (onCancel)="setCreateChatVisibility(false)"></app-create-chat>
+    </div>
+</section>

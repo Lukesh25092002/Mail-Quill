@@ -1,0 +1,64 @@
+<nav>
+    <div class="d-flex justif-content-center gap-3">
+        <img class="logo" src="/assets/icons/angular-minds-logo.svg" alt="logo" width="35px">
+        <h3 class="d-inline">Angular Minds</h3>
+    </div>
+    <a id="back" [routerLink]="['/user/organisation']" routerLinkActive="router-link-active"> <img class="icon"
+            src="/assets/icons/arrow_back.svg"> Back </a>
+</nav>
+
+<section id="screen">
+    <div class="left">
+        <div class="profile-picture">
+            <img [src]="profile?.profile" alt="">
+        </div>
+        <div class="menu">
+            <button *ngIf="accessControlService.hasPermission(PERMISSION.REMOVE_USER_FROM_ORGANISATION)" id="remove"
+                class="btn" (click)="removeUserFromOrganisation()"> <img class="icon"
+                    src="/assets/icons/person.svg">Remove</button>
+        </div>
+    </div>
+    <div class="right">
+        <h3>Profile</h3>
+        <app-loading-animation class="loading" *ngIf="isLoading"></app-loading-animation>
+        <form class="profile-form" [formGroup]="profileForm">
+            <div class="form-group form-row">
+                <div class="form-column">
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" [value]="profile?.email" readonly />
+                </div>
+                <div class="form-column">
+                    <label for="organisationRole">Role:</label>
+                    <select id="organisationRole" formControlName="organisationRole" [value]="profile?.organisationRole"
+                        [disabled]="!accessControlService.hasPermission(PERMISSION.UPDATE_USER_PRIVILEGES)">
+                        <option *ngFor="let role of Object.values(ROLE)" [value]="role">{{ role }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group form-row">
+                <div class="form-column">
+                    <label for="firstName">First Name:</label>
+                    <input id="firstName" [value]="profile?.name" type="text" readonly />
+                </div>
+                <div class="form-column">
+                    <label for="lastname">Last Name:</label>
+                    <input id="lastname" [value]="profile?.name" type="text" readonly />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="role">Role:</label>
+                <input id="role" type="email" [value]="profile?.role" readonly />
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <input id="gender" type="text" [value]="profile?.gender" readonly />
+            </div>
+
+            <div class="btn-wrapper" *ngIf="profileForm.dirty">
+                <button (click)="resetUserOrganisationRole()" class="btn btn-reset">Reset</button>
+                <button (click)="updateUserPrivileges()" [disabled]="profileForm.invalid"
+                    class="btn btn-submit">Save</button>
+            </div>
+        </form>
+    </div>
+</section>

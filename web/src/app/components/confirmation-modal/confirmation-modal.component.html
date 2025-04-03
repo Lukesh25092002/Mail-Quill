@@ -1,0 +1,11 @@
+<div class="overlay">
+    <div #confirmationBox class="confirmation-box">
+        <h2 class="title">Are you sure?</h2>
+        <hr class="seperator">
+        <p class="description">{{message}}</p>
+        <div class="btn-wrapper">
+            <button class="btn" (click)="selectOption(false)" (click)="onOut()">cancel</button>
+            <button class="btn" (click)="selectOption(true)" (click)="onOut()">ok</button>
+        </div>
+    </div>
+</div>

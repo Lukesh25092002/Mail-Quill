@@ -1,0 +1,76 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+thead{
+    background-color: #333333;
+}
+
+tbody {
+    display: block;
+    max-height: 45vh;
+    overflow-y: auto;
+}
+
+th, td {
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+tr:hover .view-user p {
+    visibility: visible;
+}
+
+tr {
+    background-color: #ffffff0c;
+}
+
+.view-user {
+    cursor: pointer;
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+
+.view-user p {
+    display: inline;
+    font-size: 0.9rem;
+    color: #5EB6FA;
+    visibility: hidden;
+}
+
+.view-user .icon {
+    margin-right: 0.25rem;
+}
+
+tbody::-webkit-scrollbar {
+    width: 5px;
+}
+  
+tbody::-webkit-scrollbar-track {
+    background-color: rgba(211, 211, 211, 0.05);
+    border-radius: 5px;
+}
+
+tbody::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 2px;
+}
+
+/* Hover effect for the scrollbar thumb */
+tbody::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background-color: rgba(211, 211, 211, 0.7); /* Lighter color on hover */
+}
+
+/* Optional: Customize the scrollbar corner (where vertical and horizontal scrollbars meet) */
+tbody::-webkit-scrollbar-corner {
+    background-color: white;
+}

@@ -1,0 +1,43 @@
+<div class="invitation" *ngIf="accessControlService.hasPermission(PERMISSION.SEND_ORGANISATION_INVITATION)">
+    <h5>Invite to organisation</h5>
+    <app-loading-animation class="loading-animation" *ngIf="isLoading"></app-loading-animation>
+
+    <form class="invitation-form" [formGroup]="organisationInvitationForm">
+        <div class="form-group form-row">
+            <div class="form-column">
+                <label for="email">Email:</label>
+                <input id="firstName" formControlName="email" type="text" />
+            </div>
+            <div class="form-column">
+                <label for="role">Role:</label>
+                <select id="organisationRole" formControlName="organisationRole">
+                    <option *ngFor="let role of Object.values(ROLE)" [value]="role">{{ role }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="btn-wrapper" *ngIf="organisationInvitationForm.dirty">
+            <button (click)="organisationInvitationForm.reset()" class="btn btn-reset">Reset</button>
+            <button (click)="inviteToOrganisation()" class="btn btn-submit"
+                [disabled]="organisationInvitationForm.invalid">Save</button>
+        </div>
+    </form>
+</div>
+
+<table cellspacing="0" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th *ngIf="accessControlService.hasPermission(PERMISSION.REVOKE_ORGANISATION_INVITATION)">Actions</th>
+        </tr>
+    </thead>
+    <tbody [ngStyle]="accessControlService.hasPermission(PERMISSION.SEND_ORGANISATION_INVITATION)?{'max-height': '30vh'}:{'max-height': '45vh'}">
+        <tr *ngFor="let invitation of collaborationService.getPendingInvitations(); let i = index">
+            <td>{{ invitation.email }}</td>
+            <td>{{ invitation.organisationRole }}</td>
+            <td *ngIf="accessControlService.hasPermission(PERMISSION.REVOKE_ORGANISATION_INVITATION)"><button
+                    class="btn delete-invitation" (click)="deleteInvitation(invitation._id)"><img class="icon"
+                        src="/assets/icons/delete.svg" alt=""></button></td>
+        </tr>
+    </tbody>
+</table>

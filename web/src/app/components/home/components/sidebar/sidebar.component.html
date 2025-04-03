@@ -1,0 +1,17 @@
+<aside #aside>
+    <app-create-chat *ngIf="isCreateChatModal" (onCancel)="setCreateChatVisibility(false)"></app-create-chat>
+    <button (click)="setCreateChatVisibility(true)">+ new</button>
+
+    <hr>
+    <section id="history">
+        <h3>History</h3>
+        <div class="history-list">
+            @for(item of chatService.getChatHistory();track item){
+                <div class="history-item">
+                    <a class="client" routerLink="chats/{{item._id}}">{{item.client}}</a>
+                    <img *ngIf="this.accessControlService.hasPermission(PERMISSION.DELETE_CHAT)" (click)="deleteChat(item._id)" class="icon" src="/assets/icons/delete.svg" alt="">
+                </div>
+            }
+        </div>
+    </section>
+</aside>

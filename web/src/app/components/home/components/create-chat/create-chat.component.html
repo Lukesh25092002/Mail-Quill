@@ -1,0 +1,22 @@
+<div class="overlay">
+    <div class="container">
+        <h2 class="title text-center">NEW CHAT</h2>
+        <app-loading-animation *ngIf="isCreateChatModalLoading"></app-loading-animation>
+        <hr class="seperator">
+        <form action="#" id="createChatForm" [formGroup]="createChatForm">
+            <div class="input-wrapper">
+                <label for="client">Client</label>
+                <input name="client" type="text" formControlName="client">
+            </div>
+            <div class="input-wrapper">
+                <label for="link">Link</label>
+                <input name="link" type="text" formControlName="link">
+            </div>
+            <div class="btn-wrapper">
+                <button class="btn" (click)="onCancel.emit()"
+                    [disabled]="isCreateChatModalLoading">cancel</button>
+                <button class="btn" (click)="createChat()" [disabled]="isCreateChatModalLoading">create</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<nav>
+    <div class="d-flex justif-content-center gap-3">
+        <img class="logo" src="/assets/icons/angular-minds-logo.svg" alt="logo" width="35px">
+        <h3 class="d-inline">Angular Minds</h3>
+    </div>
+    <a id="back" [routerLink]="['/']" routerLinkActive="router-link-active"> <img class="icon"
+            src="/assets/icons/arrow_back.svg"> Back </a>
+</nav>
+
+<section id="screen">
+    <div class="left">
+        <div class="profile-picture">
+            <img [src]="this.organisationPictureURL" alt="">
+            <ng-container *ngIf="accessControlService.hasPermission(Permission.UPDATE_ORGANISATION_PICTURE)">
+                <img class="icon" (click)="fileInput.click()" src="/assets/icons/edit.svg">
+                <input type="file" #fileInput (change)="onFileChange($event)" style="display: none;" accept="image/*">
+            </ng-container>
+        </div>
+        <div class="menu">
+            <a [routerLink]="['/user/profile']" routerLinkActive="router-link-active"> <img class="icon"
+                    src="/assets/icons/person.svg"> Profile</a>
+            <a [routerLink]="['/user/organisation']" routerLinkActive="router-link-active"> <img class="icon"
+                    src="/assets/icons/person.svg"> Organisation</a>
+            <a [routerLink]="['/user/settings']" routerLinkActive="router-link-active"> <img class="icon"
+                    src="/assets/icons/person.svg"> Settings</a>
+        </div>
+    </div>
+    <div class="right">
+        <h3>Organisation</h3>
+        <app-loading-animation class="loading" *ngIf="isLoading"></app-loading-animation>
+        <form class="profile-form">
+            <div class="form-group form-row">
+                <div class="form-column">
+                    <label for="userID">Company :</label>
+                    <input id="userID" type="text" [value]="organisationService.getUserOrganisation()?.name" readonly />
+                </div>
+                <div class="form-column">
+                    <label for="email">Role :</label>
+                    <input id="email" type="email" [value]="userService.getUserProfile()?.organisationRole" readonly />
+                </div>
+            </div>
+
+            <div class="btn-wrapper" *ngIf="this.selectedFile">
+                <button type="button" (click)="resetForm()" class="btn btn-reset">Reset</button>
+                <button type="button" (click)="uploadOrganisationPicture()" class="btn btn-submit">Save</button>
+            </div>
+        </form>
+
+        <section id="admin-panel">
+            <div class="admin-menu">
+                <div class="menu-option" [ngClass]="{'activated-menu-option': adminPanelIndex==0}" (click)="adminPanelIndex=0">People</div>
+                <div class="menu-option" [ngClass]="{'activated-menu-option': adminPanelIndex==1}" (click)="adminPanelIndex=1">Chats</div>
+                <div class="menu-option" [ngClass]="{'activated-menu-option': adminPanelIndex==2}" (click)="adminPanelIndex=2">Collaboration</div>
+            </div>
+            <div class="main-view" [ngSwitch]="adminPanelIndex">
+                    <app-people *ngSwitchCase="0"></app-people>
+                    <app-chats *ngSwitchCase="1"></app-chats>
+                    <app-collaboration *ngSwitchCase="2"></app-collaboration>
+            </div>
+        </section>
+    </div>
+</section>

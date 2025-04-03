@@ -1,0 +1,43 @@
+<section #chatContainer id="chats">
+    @if(chatMessages.length==0){
+        <div class="wrong-message no-message">
+            <img class="icon" src="/assets/icons/error.svg" alt="error">
+            <p class="warning"><span>Ohh!</span>Your chat is feeling lonely. Start a conversation now!</p>
+        </div>
+    }
+    @for(message of chatMessages;track $index) {
+        @if(message.type==MESSAGE_TYPE.HUMAN_MESSAGE){
+            <p class="query">{{message.query}}</p>
+        }
+        @else if(message.type==MESSAGE_TYPE.AI_MESSAGE){
+            <app-email [email]="message.email"></app-email>
+        }
+        @else {
+            <div class="wrong-message">
+                <img class="icon" src="/assets/icons/error.svg" alt="error">
+                <p class="warning"><span>Oops!</span> Unable to process the message</p>
+            </div>
+        }
+    }
+</section>
+
+<div id="query-bar">
+    <img class="logo" src="/assets/icons/llm.svg" alt="AI">
+
+    <form [formGroup]="chatForm" class="container-fluid d-flex justify-content-between">
+        <input type="text" formControlName="message" placeholder="Message ChatGPT" >
+        <button (click)="onQuerySubmit()" class="submit" [disabled]="chatForm.invalid" [ngClass]="chatForm.invalid? 'opacity-50':''">
+            <img src="/assets/icons/Arrow_Upward.svg" alt="Enter">
+        </button>
+    </form>
+</div>
+
+<!-- <p class="query">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor minima ipsa natus ducimus numquam aperiam eveniet necessitatibus! Quia, dicta incidunt saepe culpa explicabo quos voluptate unde obcaecati officiis aperiam quaerat.</p>
+<div class="email">
+    <div class="decoration">
+        <p class="heading">email</p>
+        <img class="icon" src="/assets/icons/content_copy.svg" alt="copy">
+    </div>
+    <p class="subject"><span>Subject: </span>This is subject</p>
+    <p class="body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus labore minima, quos voluptate maiores culpa non officiis distinctio iste aut, quaerat sint sed doloribus dolorem eaque? Quis perferendis earum labore!</p>
+</div> -->

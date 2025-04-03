@@ -1,0 +1,1 @@
+Use `uvicorn main:main --reload --host 0.0.0.0 --port 8000` to run the app 

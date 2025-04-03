@@ -1,0 +1,74 @@
+.email {
+    border-radius: 0.5rem;
+    text-align: justify;
+    background-color: black;
+    position: relative;
+    border: 1px solid rgba(211, 211, 211, 0.35);
+}
+
+.email .decoration{
+    background-color: #2F2F2F;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    height: 2rem;
+}
+
+.email .decoration .heading{
+    margin: 0rem;
+    font-size: 0.8rem;
+    display: inline;
+    color: lightgray;
+}
+
+.email .decoration .icon-wrapper{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.email .decoration .icon{
+    cursor: pointer;
+    height: 1rem;
+}
+
+.email .decoration .icon:hover{
+    transition: 100ms ease-in-out;
+    scale: 1.2;
+}
+
+.email .subject span{
+    color: #ee4553;
+    margin-right: 0.5rem;
+}
+
+.email .subject{
+    color: rgb(192, 231, 221);
+    margin: 0rem;
+    padding: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.email .body{
+    color: rgb(63, 207, 171);
+    margin: 0rem;
+    padding: 1rem;
+    padding-top: 0.5rem;
+}
+
+.copying .icon{
+    margin-left: 0.25rem;
+}
+
+.copying span{
+    margin: auto 0rem;
+    color: lightgray;
+    font-size: 0.8rem;
+}

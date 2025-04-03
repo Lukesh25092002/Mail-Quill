@@ -1,0 +1,25 @@
+<table cellspacing="0" cellpadding="5">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Email</th>
+      <th>Post</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of people; let i = index">
+      <td>{{ user.name }}</td>
+      <td>{{ user.organisationRole }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.role }}</td>
+      <td class="view-user">
+        <a *ngIf="user.userId!=userService.getUserProfile()?.userId" [routerLink]="['/user',user.userId]"
+          routerLinkActive="router-link-active"><img class="icon" src="/assets/icons/open_in_new.svg">
+          <p>view</p>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>

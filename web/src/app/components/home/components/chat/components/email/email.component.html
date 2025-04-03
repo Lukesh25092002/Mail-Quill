@@ -1,0 +1,15 @@
+<div class="email">
+    <div class="decoration">
+        <p class="heading">email</p>
+        <div class="icon-wrapper">
+            <img (click)="sendEmail()" matTooltip="send email" class="icon" src="/assets/icons/mail.svg">
+            <img *ngIf="!isCopying" (click)="copyToClipboard()" matTooltip="copy email content" class="icon" src="/assets/icons/content_copy.svg" alt="copy content">
+            <div *ngIf="isCopying" class="copying">
+                <span>copied</span>
+                <img class="icon" src="/assets/icons/check.svg" alt="copied">
+            </div>
+        </div>
+    </div>
+    <p class="subject"><span>Subject :</span>{{email.subject}}</p>
+    <p class="body">{{email.body}}</p>
+</div>
